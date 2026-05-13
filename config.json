@@ -1,0 +1,36 @@
+{
+  "accounts": [
+    {
+      "name": "akun1",
+      "username": "@Luckyone18",
+      "session_token": "JlZGxg4lQfL2bxZ7k4GNcD8drmUWOdo-n3hUh7rMcNA",
+      "telegram_id": 1079809191,
+      "withdraw_wallet": ""
+    },
+    {
+      "name": "akun2",
+      "username": "@justlucky1",
+      "session_token": "_cXt6_NWpvoaJH2pyKGjqrG39Z15vNsSBye6Fd9N1ug",
+      "telegram_id": 1416300404,
+      "withdraw_wallet": ""
+    }
+  ],
+  "telegram": {
+    "bot_token": "8702206830:AAFuhBdm_DOXGc6Q-Lf_9ffG8NC14NXTzaQ",
+    "chat_id": "1079809191",
+    "enabled": true
+  },
+  "settings": {
+    "loop_delay": 300,
+    "exchange_threshold_hash": 50,
+    "auto_buy_cheapest": true,
+    "auto_daily_bonus": true,
+    "auto_tasks": true,
+    "auto_season_claim": true,
+    "auto_level_claim": true,
+    "buy_strategy": "cheapest_upgrade",
+    "withdraw_enabled": false,
+    "withdraw_min_usd": 5.0,
+    "delay_between_accounts": 300
+  }
+}
