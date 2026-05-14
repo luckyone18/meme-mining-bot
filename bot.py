@@ -17,10 +17,11 @@ from api import MemeMiningAPI
 LOG_FILE = Path(__file__).parent / "meme_miner.log"
 CONFIG_FILE = Path(__file__).parent / "config.json"
 
-# Telegram config (loaded from config.json on startup)
-TELEGRAM_BOT_TOKEN = "8702206830:AAFuhBdm_DOXGc6Q-Lf_9ffG8NC14NXTzaQ"
-TELEGRAM_CHAT_ID = "1079809191"
-TELEGRAM_ENABLED = True
+# Telegram config (loaded from .env)
+import os
+TELEGRAM_BOT_TOKEN=""
+TELEGRAM_CHAT_ID = ""
+TELEGRAM_ENABLED = False
 
 logging.basicConfig(
     level=logging.INFO,
@@ -436,4 +437,18 @@ def main():
 
 
 if __name__ == "__main__":
+    # Load .env file
+    _env_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".env")
+    if os.path.exists(_env_path):
+        with open(_env_path) as _f:
+            for _line in _f:
+                _line = _line.strip()
+                if _line and not _line.startswith("#") and "=" in _line:
+                    _key, _val = _line.split("=", 1)
+                    os.environ[_key] = _val
+    # Reload Telegram config from .env
+    import bot as _bot
+    _bot.TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
+    _bot.TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "")
+    _bot.TELEGRAM_ENABLED = bool(_bot.TELEGRAM_BOT_TOKEN and _bot.TELEGRAM_CHAT_ID)
     main()
